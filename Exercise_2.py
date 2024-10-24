@@ -2,15 +2,26 @@
   
 # give you explanation for the approach
 def partition(arr,low,high):
-  
-  
     #write your code here
-  
+    i, j = low - 1, low
+
+    while j < high:
+        if arr[j] < arr[high]:
+            i+=1
+            arr[i], arr[j] = arr[j], arr[i]
+        j+=1
+
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i
 
 # Function to do Quick sort 
 def quickSort(arr,low,high): 
-    
     #write your code here
+    if low < high:
+        parti = partition(arr,low,high)
+        quickSort(arr, low, parti-1)
+        quickSort(arr, parti + 1, high)
+
   
 # Driver code to test above 
 arr = [10, 7, 8, 9, 1, 5] 
